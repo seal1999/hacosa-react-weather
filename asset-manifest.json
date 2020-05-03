@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/hacosa-react-weather/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/hacosa-react-weather/static/js/main.9eabfedb.chunk.js",
+    "main.js.map": "/hacosa-react-weather/static/js/main.9eabfedb.chunk.js.map",
+    "runtime-main.js": "/hacosa-react-weather/static/js/runtime-main.2b896e38.js",
+    "runtime-main.js.map": "/hacosa-react-weather/static/js/runtime-main.2b896e38.js.map",
+    "static/js/2.343fdc28.chunk.js": "/hacosa-react-weather/static/js/2.343fdc28.chunk.js",
+    "static/js/2.343fdc28.chunk.js.map": "/hacosa-react-weather/static/js/2.343fdc28.chunk.js.map",
+    "index.html": "/hacosa-react-weather/index.html",
+    "precache-manifest.e2d0a73a36f42a1b69a5ef641dae216b.js": "/hacosa-react-weather/precache-manifest.e2d0a73a36f42a1b69a5ef641dae216b.js",
+    "service-worker.js": "/hacosa-react-weather/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/hacosa-react-weather/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.343fdc28.chunk.js.LICENSE.txt": "/hacosa-react-weather/static/js/2.343fdc28.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b896e38.js",
+    "static/js/2.343fdc28.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.9eabfedb.chunk.js"
+  ]
+}

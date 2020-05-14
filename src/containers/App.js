@@ -10,10 +10,13 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 
 const Container = styled.div`
-  font-family: "Montserrat", sans-serif;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  transition: background 300ms linear;
+  background-image: linear-gradient(to top, #5ee7df 0%, #66a6ff 100%);
 `;
 
 /*

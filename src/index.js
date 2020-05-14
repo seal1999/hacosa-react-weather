@@ -1,26 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
-import LoginPage from './views/LoginPage/LoginPage'
-import AddCityPage from './views/AddCityPage/AddCityPage';
-import MainPage from './views/MainPage/MainPage';
-import DetailsPage from './views/DetailsPage/DetailsPage';
-
-var hist = createBrowserHistory();
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { AppWithRedux } from "./containers/App";
+import store from "./store/store";
 
 ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/login" component={LoginPage} />
-      <Route path="/addcity" component={AddCityPage} />
-      <Route path="/details" component={DetailsPage} />
-      <Route path="/" component={MainPage} />
-    </Switch>
-  </Router>,
+  <Provider store={store}>
+    <AppWithRedux />
+  </Provider>,
   document.getElementById("root")
 );
-
-serviceWorker.unregister();

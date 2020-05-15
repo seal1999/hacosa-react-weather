@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styled from "styled-components";
-// import { PropagateLoader } from "react-spinners";
-import { fetchWeather } from "../actions/actionCreators";
+import * as actions from '../actions/actionCreators';
 import Aside from "../components/Aside";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -33,18 +31,13 @@ class App extends Component {
   }
 
   render() {
-    /*
-      Pass the fetchWeather action creator down to the component hierarchy.
-      We want to call it - namely we want to dispatch a new action to the redux
-      store - when we enter a new city in the search bar.
-    */
-    // const { data, errorMessage, fetchWeather } = this.props;
+    const { onToggleMenu } = this.props;
     return (
       <div className="container">
         <Container>
           {/* 컴포넌트는 Aside, Head, Main, Footer로 구성 */}
           <Aside />
-          <Header />
+          <Header onToggleMenu={onToggleMenu} />
           <Main />
           <Footer />
         </Container>
@@ -56,29 +49,18 @@ class App extends Component {
 /*
   redux에 의해 관리되는 state를 가져와서 props를 통해 컨테이너 컴포넌트에서 사용가능하도록 매핑
 */
-function mapStateToProps(state) {
-  const { data, errorMessage, isLoading } = state.weather;
-  const props = {
-    data,
-    errorMessage,
-    isLoading,
-  };
-  return props;
-}
+const mapStateToProps = (state) => ({
+  showMenu : state.showMenu
+});
 
 /* 
   action creator를 props에 bind하고, dispatch 함수를 통해 모든 reducer에게 전달
   이 함수에서 전달된 것들은 UserList 컨테이너의 props로 사용
 */
-function mapDispatchToProps(dispatch) {
-  // object destructuring: {fetchUsers (prop): fetchUsers (action creator)}
-  return bindActionCreators({ fetchWeather }, dispatch);
-}
+const mapDispatchToProps = (dispatch) => ({
+  onToggleMenu: () => dispatch(actions.toggleMenu())
+})
 
-/*
-  Promote the "dumb", redux-unaware, presentational component, to a "smart",
-  redux-aware, container component.
-*/
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 const AppWithRedux = enhance(App);
 

@@ -5,10 +5,13 @@ const API_KEY = "15e39f24e05f6ea0af88f89dc11e5295";
 const ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 
 /*
-  We don't expose the start/success/fail action creators (but we do expose the
-  start/success/fail action types). We need these action creators to test the
-  fetchWeather action creator, which is asynchronous.
+    action 객체를 만드는 액션 생성자들을 선언 (action creators)
+    여기서 () => ({}) 은, function() { return { } } 와 동일한 의미
 */
+export const toggleMenu = () => ({
+  type: types.TOGGLE_MENU
+})
+
 function fetchWeatherStart() {
   const action = { type: types.FETCH_WEATHER_START };
   return action;

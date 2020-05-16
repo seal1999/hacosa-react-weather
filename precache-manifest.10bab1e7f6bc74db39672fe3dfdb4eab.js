@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1fff2f5955fff544820cd383f9e463b0",
+    "revision": "dfe9b1de78348ed3f053a5bda752fd1f",
     "url": "/hacosa-react-weather/index.html"
   },
   {
-    "revision": "749fb9f7edf6046c26cc",
+    "revision": "ae03fca6398df63ebd68",
     "url": "/hacosa-react-weather/static/css/main.bb0f908c.chunk.css"
   },
   {
-    "revision": "7e2b04c461ec19e47dda",
-    "url": "/hacosa-react-weather/static/js/2.eb53982f.chunk.js"
+    "revision": "c32ca4c069b0634de48d",
+    "url": "/hacosa-react-weather/static/js/2.30ea5519.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/hacosa-react-weather/static/js/2.eb53982f.chunk.js.LICENSE.txt"
+    "url": "/hacosa-react-weather/static/js/2.30ea5519.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "749fb9f7edf6046c26cc",
-    "url": "/hacosa-react-weather/static/js/main.580ab84c.chunk.js"
+    "revision": "ae03fca6398df63ebd68",
+    "url": "/hacosa-react-weather/static/js/main.7473cf6b.chunk.js"
   },
   {
     "revision": "5e00c720410ded9b33e3",

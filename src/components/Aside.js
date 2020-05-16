@@ -10,7 +10,7 @@ const Aside = ({ showMenu }) => {
   // connect하고 mapStateToProps
   return (
     <div class={showMenu ? "side-menu__container-active" : "side-menu__container"}>
-      <nav class={showMenu ? "slide-menu-active: showMenu" : "slide-menu"}>
+      <nav class={showMenu ? "slide-menu slide-menu-active" : "slide-menu"}>
         <section class="menu-header">
           <span class="greeting__text">Welcome Back</span>
           <div class="profile-image__container">
@@ -33,7 +33,7 @@ const Aside = ({ showMenu }) => {
           </ul>
         </section>
         <section class="menu-footer">
-          <small class="copyright__text">Copyright © 2019 Minimus</small>
+          <small class="copyright__text">Copyright © 2020 Teacher.Seal</small>
         </section>
       </nav>
     </div>

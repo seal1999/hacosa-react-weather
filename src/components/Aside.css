@@ -13,7 +13,13 @@
 }
 
 .side-menu__container-active {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
   pointer-events: auto;
+  z-index: 50;
 }
 
 .side-menu__container::before {
@@ -152,4 +158,9 @@
 
 .profile__image {
   max-width: 4rem;
+}
+
+.copyright__text {
+  display: block;
+  text-align: center;
 }

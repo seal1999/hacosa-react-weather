@@ -31,12 +31,12 @@ class App extends Component {
   }
 
   render() {
-    const { onToggleMenu } = this.props;
+    const { showMenu, onToggleMenu } = this.props;
     return (
       <div className="container">
         <Container>
           {/* 컴포넌트는 Aside, Head, Main, Footer로 구성 */}
-          <Aside />
+          <Aside showMenu={showMenu} />
           <Header onToggleMenu={onToggleMenu} />
           <Main />
           <Footer />
@@ -50,7 +50,7 @@ class App extends Component {
   redux에 의해 관리되는 state를 가져와서 props를 통해 컨테이너 컴포넌트에서 사용가능하도록 매핑
 */
 const mapStateToProps = (state) => ({
-  showMenu : state.showMenu
+  showMenu : state.navigation.showMenu
 });
 
 /* 

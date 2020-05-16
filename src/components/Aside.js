@@ -1,13 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
+// import PropTypes from "prop-types";
+// import { connect } from 'react-redux';
+
 import "./Aside.css";
 
-const Aside = props => {
-  const showMenu = false;
+const Aside = ({ showMenu }) => {
+  // showMenu를 store에서 가져오려면
+  // connect하고 mapStateToProps
   return (
-    <div
-      class={showMenu ? "side-menu__container-active" : "side-menu__container"}
-    >
-      <nav class="slide-menu">
+    <div class={showMenu ? "side-menu__container-active" : "side-menu__container"}>
+      <nav class={showMenu ? "slide-menu-active: showMenu" : "slide-menu"}>
         <section class="menu-header">
           <span class="greeting__text">Welcome Back</span>
           <div class="profile-image__container">
@@ -36,5 +39,11 @@ const Aside = props => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  showMenu: state.navigation.showMenu
+});
+
+connect(mapStateToProps)(Aside);
 
 export default Aside;

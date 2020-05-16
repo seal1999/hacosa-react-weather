@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/hacosa-react-weather/static/css/main.bb0f908c.chunk.css",
-    "main.js": "/hacosa-react-weather/static/js/main.7473cf6b.chunk.js",
-    "main.js.map": "/hacosa-react-weather/static/js/main.7473cf6b.chunk.js.map",
+    "main.css": "/hacosa-react-weather/static/css/main.e9b245cc.chunk.css",
+    "main.js": "/hacosa-react-weather/static/js/main.111be9de.chunk.js",
+    "main.js.map": "/hacosa-react-weather/static/js/main.111be9de.chunk.js.map",
     "runtime-main.js": "/hacosa-react-weather/static/js/runtime-main.2b896e38.js",
     "runtime-main.js.map": "/hacosa-react-weather/static/js/runtime-main.2b896e38.js.map",
     "static/js/2.30ea5519.chunk.js": "/hacosa-react-weather/static/js/2.30ea5519.chunk.js",
     "static/js/2.30ea5519.chunk.js.map": "/hacosa-react-weather/static/js/2.30ea5519.chunk.js.map",
     "index.html": "/hacosa-react-weather/index.html",
-    "precache-manifest.10bab1e7f6bc74db39672fe3dfdb4eab.js": "/hacosa-react-weather/precache-manifest.10bab1e7f6bc74db39672fe3dfdb4eab.js",
+    "precache-manifest.2d12e28fb09f95c660d5d9071052caf1.js": "/hacosa-react-weather/precache-manifest.2d12e28fb09f95c660d5d9071052caf1.js",
     "service-worker.js": "/hacosa-react-weather/service-worker.js",
-    "static/css/main.bb0f908c.chunk.css.map": "/hacosa-react-weather/static/css/main.bb0f908c.chunk.css.map",
+    "static/css/main.e9b245cc.chunk.css.map": "/hacosa-react-weather/static/css/main.e9b245cc.chunk.css.map",
     "static/js/2.30ea5519.chunk.js.LICENSE.txt": "/hacosa-react-weather/static/js/2.30ea5519.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2b896e38.js",
     "static/js/2.30ea5519.chunk.js",
-    "static/css/main.bb0f908c.chunk.css",
-    "static/js/main.7473cf6b.chunk.js"
+    "static/css/main.e9b245cc.chunk.css",
+    "static/js/main.111be9de.chunk.js"
   ]
 }

@@ -21,10 +21,10 @@ const HeaderDiv = styled.div`
 const Header = ({onToggleMenu}) => {
   return (
     <HeaderDiv>
-      <div class="left__section">
+      <div className="left__section">
         <svg
           onClick={onToggleMenu}
-          class="hamburger__icon"
+          className="hamburger__icon"
           id="Menu_Burger_Icon"
           data-name="Menu Burger Icon"
           viewBox="31.5 30 49.9 32"
@@ -33,7 +33,7 @@ const Header = ({onToggleMenu}) => {
             id="Rectangle_9"
             width="49.9"
             height="4"
-            class="hamburger__icon__fill"
+            className="hamburger__icon__fill"
             data-name="Rectangle 9"
             rx="2"
             transform="translate(31.5 58)"
@@ -42,7 +42,7 @@ const Header = ({onToggleMenu}) => {
             id="Rectangle_10"
             width="49.9"
             height="4"
-            class="hamburger__icon__fill"
+            className="hamburger__icon__fill"
             data-name="Rectangle 10"
             rx="2"
             transform="translate(31.5 44)"
@@ -51,13 +51,13 @@ const Header = ({onToggleMenu}) => {
             id="Rectangle_11"
             width="49.9"
             height="4"
-            class="hamburger__icon__fill"
+            className="hamburger__icon__fill"
             data-name="Rectangle 11"
             rx="2"
             transform="translate(31.5 30)"
           ></rect>
         </svg>
-        <svg class="logo__icon" viewBox="150.3 22.2 213.7 42.8">
+        <svg className="logo__icon" viewBox="150.3 22.2 213.7 42.8">
           <path
             fill="#00ff9b"
             d="M150.3 65V22.2L193 65z"
@@ -69,12 +69,12 @@ const Header = ({onToggleMenu}) => {
             data-name="Path 2"
           ></path>
           <text
-            class="logo__text"
+            className="logo__text"
             fill="#432c85"
-            font-family="SegoeUI-Semibold,Segoe UI"
-            font-size="30"
-            font-weight="600"
-            letter-spacing=".1em"
+            fontFamily="SegoeUI-Semibold,Segoe UI"
+            fontSize="30"
+            fontWeight="600"
+            letterSpacing=".1em"
             transform="translate(220 56)"
           >
             <tspan x="0" y="0">
@@ -83,15 +83,15 @@ const Header = ({onToggleMenu}) => {
           </text>
         </svg>
       </div>
-      <h3 class="date__text">Today</h3>
-      <div class="mode-toggle__container">
-        <span class="mode-toggle__text">Light</span>
-        <label class="toggle-button__container">
-          <input type="checkbox" class="mode-toggle__input" />
-          <span class="mode-toggle__bg"></span>
-          <span class="mode-toggle__circle"></span>
+      <h3 className="date__text">Today</h3>
+      <div className="mode-toggle__container">
+        <span className="mode-toggle__text">Light</span>
+        <label className="toggle-button__container">
+          <input type="checkbox" className="mode-toggle__input" />
+          <span className="mode-toggle__bg"></span>
+          <span className="mode-toggle__circle"></span>
         </label>
-        <span class="mode-toggle__text">Dark</span>
+        <span className="mode-toggle__text">Dark</span>
       </div>
     </HeaderDiv>
   );

@@ -15,7 +15,7 @@ import reducers from './reducers';
 // redux-devtools
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-// react-redux-firebase (v2 -> v3 Migration)
+// react-redux-firebase
 import firebase from 'firebase/app';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';

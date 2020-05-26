@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import * as actions from '../actions/actionCreators';
-import { Switch, Route } from "react-router-dom";
-import Aside from "../components/Aside/Aside";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import Main from "../pages/Main/Main";
-import Add from "../pages/Add/Add";
-import Login from "../pages/Login/Login";
-import Details from "../pages/Details/Details";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { toggleMenu } from '../reducers/navigation';
+import { Switch, Route } from 'react-router-dom';
+import Aside from '../components/Aside';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Main from '../components/Main';
+import Add from '../components/Add';
+import Login from '../components/Login';
+import Details from '../components/Details';
+import NoMatch from '../components/NoMatch';
 
 const Container = styled.div`
   width: 100%;
@@ -23,34 +24,35 @@ const Container = styled.div`
 
 class App extends Component {
   render() {
-    const { showMenu, onToggleMenu } = this.props;
+    const { showMenu, onToggleMenu, currentUser } = this.props;
     return (
-        <div className="container">
-          <Container>
-            <Aside showMenu={showMenu} />
-            <Header onToggleMenu={onToggleMenu} />
-            <Switch>
-              <Route exact path="/" component={Main} />
-              <Route path="/add" component={Add} />
-              <Route path="/login" component={Login} />
-              <Route path="/details" component={Details} />
-            </Switch>
-            <Footer />
-          </Container>
-        </div>
+      <div className="container">
+        <Container>
+          <Aside showMenu={showMenu} currentUser={currentUser} />
+          <Header onToggleMenu={onToggleMenu} />
+          <Switch>
+            <Route exact path="/hacosa-react-weather" component={Main} />
+            <Route path="/add" component={Add} />
+            <Route path="/login" component={Login} />
+            <Route path="/details" component={Details} />
+            <Route component={NoMatch} />
+          </Switch>
+          <Footer />
+        </Container>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  showMenu : state.navigation.showMenu
+  showMenu: state.navigation.showMenu,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onToggleMenu: () => dispatch(actions.toggleMenu())
-})
+  onToggleMenu: () => dispatch(toggleMenu()),
+});
 
 const enhance = connect(mapStateToProps, mapDispatchToProps);
 const AppWithRedux = enhance(App);
 
-export { App, AppWithRedux };
+export default AppWithRedux;

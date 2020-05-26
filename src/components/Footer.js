@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // styled-component sample
 const FooterDiv = styled.div`
-  min-height: 100vh;
+  min-height: 2rem;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -16,8 +16,6 @@ const Copy = styled.small`
 `;
 
 const Footer = props => {
-  // do something
-  // const navClass = `nav-extended ${props.color}`;
   return (
     <FooterDiv>
       <Copy>Copyright © 2020 Teacher.Seal</Copy>

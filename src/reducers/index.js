@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
-import { weatherReducer } from "./weatherReducer";
-import { navigationReducer } from "./navigationReducer";
+import { combineReducers } from 'redux';
+import navigationReducer from './navigation';
+import weatherReducer from './weather';
+import authReducer from './auth';
 
 const rootReducer = combineReducers({
   navigation: navigationReducer,
-  weather: weatherReducer
+  weather: weatherReducer,
+  auth: authReducer,
 });
 
 export default rootReducer;

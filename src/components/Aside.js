@@ -1,13 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import '../css/Aside.css';
 
-import "./Aside.css";
-
-const Aside = ({ showMenu }) => {
+const Aside = ({ showMenu, currentUser }) => {
   return (
-    <div className={showMenu ? "side-menu__container-active" : "side-menu__container"}>
-      <nav className={showMenu ? "slide-menu slide-menu-active" : "slide-menu"}>
+    <div
+      className={
+        showMenu ? 'side-menu__container-active' : 'side-menu__container'
+      }
+    >
+      <nav className={showMenu ? 'slide-menu slide-menu-active' : 'slide-menu'}>
         <section className="menu-header">
           <span className="greeting__text">Welcome Back</span>
           <div className="profile-image__container">
@@ -25,21 +28,21 @@ const Aside = ({ showMenu }) => {
         <section className="menu-body">
           <ul className="menu-links">
             <li className="menu-link">
-              <Link to="/">Home</Link>
+              <Link to="/hacosa-react-weather">Home</Link>
             </li>
             <li className="menu-link">
               <Link to="/add">Add City</Link>
             </li>
-            <li className="menu-link">
-              <Link to="/login">Logout</Link>
-            </li>
+            <li className="menu-link">SIGN OUT</li>
             <li className="menu-link">
               <Link to="/details">Details</Link>
             </li>
           </ul>
         </section>
         <section className="menu-footer">
-          <small className="copyright__text">Copyright © 2020 Teacher.Seal</small>
+          <small className="copyright__text">
+            Copyright © 2020 Teacher.Seal
+          </small>
         </section>
       </nav>
     </div>
@@ -47,7 +50,7 @@ const Aside = ({ showMenu }) => {
 };
 
 const mapStateToProps = (state) => ({
-  showMenu: state.navigation.showMenu
+  showMenu: state.navigation.showMenu,
 });
 
 connect(mapStateToProps)(Aside);

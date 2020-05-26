@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  transition: background 300ms linear;
+  background-image: linear-gradient(to top, #5ee7df 0%, #66a6ff 100%);
+}

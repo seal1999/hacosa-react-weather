@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 // import { googleProvider } from "../../config/fbConfig";
 import '../css/Login.css';
 
-// const [email, setEmail] = useState('');
-// const [password, setPassword] = useState('');
-
 const Login = (props) => {
   const [state, setState] = useState({
     email: '',

@@ -1,9 +1,9 @@
 import React from 'react';
 import WeatherCard from './WeatherCard';
 import AddCard from './AddCard';
-import '../css/Main.css';
+import '../css/Weather.css';
 
-const Main = (props) => {
+const Weather = (props) => {
   return (
     <div className="main__container">
       <WeatherCard />
@@ -12,4 +12,4 @@ const Main = (props) => {
   );
 };
 
-export default Main;
+export default Weather;

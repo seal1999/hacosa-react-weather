@@ -16,7 +16,7 @@ const App = ({ firebase, auth }) => {
 
 function mapStateToProps(state) {
   return {
-    auth: state.firebaseReducer.auth,
+    auth: state.authReducer.auth,
   };
 }
 

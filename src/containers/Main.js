@@ -17,7 +17,7 @@ const Main = ({ showMenu, onToggleMenu }) => {
       <Aside showMenu={showMenu} />
       <Header onToggleMenu={onToggleMenu} />
       <Switch>
-        <Route exact path="/" component={Weather} />
+        <Route exact path="/main" component={Weather} />
         <Route path="/add" component={Add} />
         <Route path="/details" component={Details} />
         <Route component={NoMatch} />

@@ -47,14 +47,6 @@ export const signup = (email, password) => async (dispatch) => {
             });
           }
         });
-      })
-      .catch(() => {
-        dispatch(apiCallError());
-        dispatch({
-          type: SIGNUP_ERROR,
-          payload:
-            "Something went wrong, we couldn't create your account. Please try again.",
-        });
       });
   } catch (err) {
     dispatch(apiCallError());
@@ -85,17 +77,10 @@ export const signin = (email, password, callback) => async (dispatch) => {
             payload: "You haven't verified your e-mail address.",
           });
         }
-      })
-      .catch(() => {
-        dispatch(apiCallError());
-        dispatch({
-          type: SIGNIN_ERROR,
-          payload: 'Invalid login credentials',
-        });
       });
   } catch (err) {
     dispatch(apiCallError());
-    dispatch({ type: SIGNIN_ERROR, payload: 'Invalid login credentials' });
+    dispatch({ type: SIGNIN_ERROR, payload: 'Invalid login credentials - 2' });
   }
 };
 

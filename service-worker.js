@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hacosa-react-weather/precache-manifest.94f0ac90df22361b8b4e98cdef9952de.js"
+  "/hacosa-react-weather/precache-manifest.ccc4dbe75b1b8880539bef9f59adcfc7.js"
 );
 
 self.addEventListener('message', (event) => {

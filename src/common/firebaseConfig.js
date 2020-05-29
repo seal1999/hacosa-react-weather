@@ -1,7 +1,6 @@
 import * as firebase from 'firebase/app';
-import 'firebase/auth';
-
 import * as Constants from './constants';
+import 'firebase/auth';
 
 export const firebaseConfig = {
   apiKey: Constants.API_KEY,
@@ -10,10 +9,13 @@ export const firebaseConfig = {
   projectId: 'hacosareactweather',
   storageBucket: 'hacosareactweather.appspot.com',
   messagingSenderId: '1038726577815',
-  appId: '1:1038726577815:web:59be8bf84d2e26fecef3d2',
-  measurementId: 'G-VQFP290LTK',
+  appId: '1:1038726577815:web:8eec5acfabf2245acef3d2',
+  measurementId: 'G-Q7E9MV7R2F',
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
 export default firebase;

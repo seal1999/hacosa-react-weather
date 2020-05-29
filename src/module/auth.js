@@ -1,9 +1,7 @@
 import * as Constants from '../common/constants';
 import firebase from '../common/firebaseConfig';
 
-// actions
-export const BEGIN_API_CALL = `${Constants.AUTH}/BEGIN_API_CALL`;
-export const API_CALL_ERROR = `${Constants.AUTH}/API_CALL_ERROR`;
+// action types
 export const SIGNUP_SUCCESS = `${Constants.AUTH}/SIGNUP_SUCCESS`;
 export const SIGNUP_ERROR = `${Constants.AUTH}/SIGNUP_ERROR`;
 export const SIGNIN_SUCCESS = `${Constants.AUTH}/SIGNIN_SUCCESS`;
@@ -14,13 +12,10 @@ export const SIGNOUT_ERROR = `${Constants.AUTH}/SIGNOUT_ERROR`;
 export const RESET_SUCCESS = `${Constants.AUTH}/RESET_SUCCESS`;
 export const RESET_ERROR = `${Constants.AUTH}/RESET_ERROR`;
 
-// action creator
-export const beginApiCall = () => ({ type: BEGIN_API_CALL });
-export const apiCallError = () => ({ type: API_CALL_ERROR });
-// Signing up with Firebase
+// Signing up action (with Firebase)
 export const signup = (email, password) => async (dispatch) => {
   try {
-    dispatch(beginApiCall());
+    // dispatch(beginApiCall());
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -47,9 +42,17 @@ export const signup = (email, password) => async (dispatch) => {
             });
           }
         });
+      })
+      .catch(() => {
+        // dispatch(apiCallError());
+        dispatch({
+          type: SIGNUP_ERROR,
+          payload:
+            "Something went wrong, we couldn't create your account. Please try again.",
+        });
       });
   } catch (err) {
-    dispatch(apiCallError());
+    // dispatch(apiCallError());
     dispatch({
       type: SIGNUP_ERROR,
       payload:
@@ -58,10 +61,11 @@ export const signup = (email, password) => async (dispatch) => {
   }
 };
 
-// Signing in with Firebase
+// Signing in action (with Firebase)
 export const signin = (email, password, callback) => async (dispatch) => {
+  // export const signin = (email, password, history) => async (dispatch) => {
   try {
-    dispatch(beginApiCall());
+    // dispatch(beginApiCall());
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -69,6 +73,9 @@ export const signin = (email, password, callback) => async (dispatch) => {
         if (data.user.emailVerified) {
           console.log('IF', data.user.emailVerified);
           dispatch({ type: SIGNIN_SUCCESS });
+          // console.log('history: ', history);
+          // history.push('/hacosa-react-weather');
+          // console.log('history: ', history);
           callback();
         } else {
           console.log('ELSE', data.user.emailVerified);
@@ -77,32 +84,41 @@ export const signin = (email, password, callback) => async (dispatch) => {
             payload: "You haven't verified your e-mail address.",
           });
         }
+      })
+      .catch(() => {
+        // dispatch(apiCallError());
+        dispatch({
+          type: SIGNIN_ERROR,
+          payload: 'Invalid login credentials',
+        });
       });
   } catch (err) {
-    dispatch(apiCallError());
+    // dispatch(apiCallError());
     dispatch({ type: SIGNIN_ERROR, payload: 'Invalid login credentials - 2' });
   }
 };
 
-// Signing out with Firebase
+// Signing out action (with Firebase)
 export const signout = () => async (dispatch) => {
   try {
-    dispatch(beginApiCall());
+    // dispatch(beginApiCall());
+    console.log('SIGN OUT-----');
     firebase
       .auth()
       .signOut()
       .then(() => {
+        console.log('SIGN OUT----- SUCCESS');
         dispatch({ type: SIGNOUT_SUCCESS });
       })
       .catch(() => {
-        dispatch(apiCallError());
+        // dispatch(apiCallError());
         dispatch({
           type: SIGNOUT_ERROR,
           payload: 'Error, we were not able to log you out. Please try again.',
         });
       });
   } catch (err) {
-    dispatch(apiCallError());
+    // dispatch(apiCallError());
     dispatch({
       type: SIGNOUT_ERROR,
       payload: 'Error, we were not able to log you out. Please try again.',
@@ -110,10 +126,10 @@ export const signout = () => async (dispatch) => {
   }
 };
 
-// Reset password with Firebase
+// Reset password action (with Firebase)
 export const resetPassword = (email) => async (dispatch) => {
   try {
-    dispatch(beginApiCall());
+    // dispatch(beginApiCall());
     firebase
       .auth()
       .sendPasswordResetEmail(email)
@@ -125,7 +141,7 @@ export const resetPassword = (email) => async (dispatch) => {
         }),
       )
       .catch(() => {
-        dispatch(apiCallError());
+        // dispatch(apiCallError());
         dispatch({
           type: RESET_ERROR,
           payload:
@@ -133,19 +149,25 @@ export const resetPassword = (email) => async (dispatch) => {
         });
       });
   } catch (err) {
-    dispatch(apiCallError());
+    // dispatch(apiCallError());
     dispatch({ type: RESET_ERROR, payload: err });
   }
 };
 
 // reducer
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   authMsg: '',
+  email: '',
+  isAuth: false,
 };
 
-export default function (state = INITIAL_STATE, action) {
-  if (action.type === SIGNIN_SUCCESS || action.type === SIGNOUT_SUCCESS) {
-    return { ...state, authMsg: '' };
+const authReducer = (state = INITIAL_STATE, action) => {
+  if (action.type === SIGNIN_SUCCESS) {
+    console.log('AUTH REDUCER : SING-IN SUCCESS --------------');
+    return { ...state, authMsg: '', isAuth: true };
+  } else if (action.type === SIGNOUT_SUCCESS) {
+    console.log('AUTH REDUCER : SIGNOUT_SUCCESS --------------');
+    return { ...state, authMsg: '', isAuth: false };
   } else if (
     action.type === SIGNUP_SUCCESS ||
     action.type === SIGNUP_ERROR ||
@@ -159,4 +181,6 @@ export default function (state = INITIAL_STATE, action) {
   } else {
     return state;
   }
-}
+};
+
+export default authReducer;

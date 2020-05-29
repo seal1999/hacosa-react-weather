@@ -1,4 +1,7 @@
+// react
 import React from 'react';
+
+// style
 import '../css/Add.css';
 
 const Add = (props) => {

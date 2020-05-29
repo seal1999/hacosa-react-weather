@@ -1,20 +1,29 @@
+// react, redux, router
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { signup, signin, resetPassword } from '../reducers/firebase';
+import { withRouter } from 'react-router-dom';
+
+// module (ducks)
+import { signup, signin, resetPassword } from '../module/auth';
+import { changeLoginMessage } from '../module/navigation';
+
+// common utils
 import useForm from '../common/useForm';
 import validate from '../common/validateLoginForm';
-import history from '../common/history';
-import Spinner from '../components/Spinner';
+import * as Constants from '../common/constants';
+
+// css
 import '../css/Login.css';
 
-// TODO: history prop이 전달되지 않는 원인 파악
 const Login = ({
   signup,
   signin,
   resetPassword,
   authMsg,
-  // history,
-  loading,
+  history,
+  loginMessage,
+  setLogin,
+  setSignup,
 }) => {
   const [newUser, setNewUser] = useState(false);
   const [reset, SetReset] = useState(false);
@@ -26,16 +35,13 @@ const Login = ({
 
   function login() {
     if (newUser) {
-      // signup
       signup(credentials.email, credentials.password);
     } else {
       if (reset) {
-        // reset password
         resetPassword(credentials.email);
       } else {
-        // signin
         signin(credentials.email, credentials.password, () =>
-          history.push('/main'),
+          history.push('/home'),
         );
       }
     }
@@ -45,7 +51,7 @@ const Login = ({
     <div className="main__container">
       <div className="login-card">
         <div className="login-content">
-          <span className="login-header">Login</span>
+          <span className="login-header">{loginMessage.title}</span>
           <form className="login-form" onSubmit={handleSubmit} noValidate>
             {/* Email */}
             <input
@@ -86,52 +92,21 @@ const Login = ({
               value="Login"
               className="login-btn"
             >
-              {loading ? (
-                <Spinner />
-              ) : reset ? (
-                'Reset password'
-              ) : newUser ? (
-                'Create account'
-              ) : (
-                'Sign in'
-              )}
+              {loginMessage.btnCaption}
             </button>
-            {!newUser && !reset && (
-              <button onClick={() => SetReset(true)} className="btn-link">
-                Forgot password?
-              </button>
-            )}
-            {reset && (
-              <button onClick={() => SetReset(false)} className="btn-link">
-                Back to sign in
-              </button>
-            )}
           </form>
-          <footer className="login-footer">
-            <p>
-              {newUser
-                ? 'Already have an account?'
-                : "Don't have an account yet?"}
-            </p>
-            <button
-              onClick={() => {
-                setNewUser(!newUser);
-                if (reset) SetReset(false);
-              }}
-              className="btn-switch"
-            >
-              {newUser ? 'Sign in' : 'Create an account'}
-            </button>
-          </footer>
           <div className="signup-link-wrapper">
-            <span className="signup-notice">Don't have an account?</span>
-            <a href="/" className="signup-link">
-              {reset
-                ? 'Reset password'
-                : newUser
-                ? 'Create an account'
-                : 'Sign in'}
-            </a>
+            <span className="signup-notice">{loginMessage.altMessage}</span>
+            <span
+              className="signup-link"
+              onClick={
+                loginMessage.altUrl.indexOf('signup') !== -1
+                  ? setSignup
+                  : setLogin
+              }
+            >
+              {loginMessage.altTitle}
+            </span>
           </div>
         </div>
         <div className="login-aside">
@@ -149,7 +124,7 @@ const Login = ({
 function mapStateToProps(state) {
   return {
     authMsg: state.authReducer.authMsg,
-    loading: state.apiStatusReducer.apiCallsInProgress > 0,
+    loginMessage: state.navigationReducer.loginMessage,
   };
 }
 
@@ -159,7 +134,10 @@ function mapDispatchToProps(dispatch) {
     signin: (email, password, callback) =>
       dispatch(signin(email, password, callback)),
     resetPassword: (email) => dispatch(resetPassword(email)),
+    setLogin: () => dispatch(changeLoginMessage(Constants.LOGIN_MESSAGE_TYPE)),
+    setSignup: () =>
+      dispatch(changeLoginMessage(Constants.SIGNUP_MESSAGE_TYPE)),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

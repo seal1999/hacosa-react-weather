@@ -1,12 +1,12 @@
 import * as Constants from '../common/constants';
 
-// actions
+// action types
 export const FETCH_WEATHER = `${Constants.WEATHER}/FETCH_WEATHER`;
 export const FETCH_WEATHER_START = `${Constants.WEATHER}/FETCH_WEATHER_START`;
 export const FETCH_WEATHER_SUCCESS = `${Constants.WEATHER}/FETCH_WEATHER_SUCCESS`;
 export const FETCH_WEATHER_FAIL = `${Constants.WEATHER}/FETCH_WEATHER_FAIL`;
 
-// action creators
+// actions
 export const fetchWeatherStart = () => ({ type: FETCH_WEATHER_START });
 export const fetchWeatherSuccess = (data) => ({
   type: FETCH_WEATHER_SUCCESS,
@@ -17,14 +17,13 @@ export const fetchWeatherFail = (error) => ({
   payload: error,
 });
 
-// initial state
+// reducer
 export const initialState = {
   data: [],
   isLoading: false,
   errorMessage: '',
 };
 
-// reducers
 const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_WEATHER_SUCCESS:
@@ -55,4 +54,5 @@ const weatherReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 export default weatherReducer;

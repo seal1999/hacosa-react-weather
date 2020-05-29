@@ -1,7 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+// react
+import React from 'react';
 
-// styled-component sample
+// styled-components test
+import styled from 'styled-components';
+
 const FooterDiv = styled.div`
   min-height: 2rem;
   width: 100vw;
@@ -15,7 +17,7 @@ const Copy = styled.small`
   text-align: center;
 `;
 
-const Footer = props => {
+const Footer = (props) => {
   return (
     <FooterDiv>
       <Copy>Copyright © 2020 Teacher.Seal</Copy>

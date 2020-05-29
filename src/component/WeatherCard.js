@@ -1,4 +1,7 @@
+// react
 import React from 'react';
+
+// css
 import '../css/WeatherCard.css';
 
 const WeatherCard = (props) => {

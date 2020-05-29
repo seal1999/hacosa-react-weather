@@ -1,4 +1,7 @@
+// react
 import React from 'react';
+
+// style
 import '../css/AddCard.css';
 
 const AddCard = (props) => {

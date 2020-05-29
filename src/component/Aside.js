@@ -1,9 +1,15 @@
+// react, redux, router
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+// module (ducks)
+import { signout } from '../module/auth';
+
+// css
 import '../css/Aside.css';
 
-const Aside = ({ showMenu, currentUser }) => {
+const Aside = ({ showMenu, email, signout }) => {
   return (
     <div
       className={
@@ -21,21 +27,25 @@ const Aside = ({ showMenu, currentUser }) => {
             />
           </div>
           <div className="account-details">
-            <span className="name__text">userEmail</span>
+            <span className="name__text">
+              {email ? email : 'oops, missing'}
+            </span>
             <span className="email__text">Free Plan</span>
           </div>
         </section>
         <section className="menu-body">
           <ul className="menu-links">
             <li className="menu-link">
-              <Link to="/hacosa-react-weather">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li className="menu-link">
-              <Link to="/add">Add City</Link>
+              <Link to="/home/add">Add City</Link>
             </li>
-            <li className="menu-link">SIGN OUT</li>
             <li className="menu-link">
-              <Link to="/details">Details</Link>
+              <Link to="/home/details">Details</Link>
+            </li>
+            <li className="menu-link" onClick={signout}>
+              SIGN OUT
             </li>
           </ul>
         </section>
@@ -50,9 +60,13 @@ const Aside = ({ showMenu, currentUser }) => {
 };
 
 const mapStateToProps = (state) => ({
-  showMenu: state.navigation.showMenu,
+  showMenu: state.navigationReducer.showMenu,
+  email: state.authReducer.email,
 });
 
-connect(mapStateToProps)(Aside);
+const mapDispatchToProps = (dispatch) => ({
+  signout: () => dispatch(signout()),
+});
 
-export default Aside;
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+export default withRouter(enhance(Aside));
